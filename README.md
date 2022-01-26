@@ -1,6 +1,6 @@
 ![alt text](./img/img.png) <br />
 
-**Number Value** | **Description
+**Number Value** | **Description**
 --- | ---
 1 | Position which already has been searched `green`
 2 | Obstacles `red`
