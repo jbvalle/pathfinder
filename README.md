@@ -2,6 +2,6 @@
 
 **Number Value** | **Description**
 --- | ---
-1 | Position which already has been searched `green`
+1 | Position which already has been searched `yellow`
 2 | Obstacles `red`
 3 | Goal `blue`
