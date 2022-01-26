@@ -10,3 +10,8 @@ all: $(TARGET)
 
 $(TARGET): $(SRCS)
 	$(CC) $(CFLAGS) -o $@ $^ -lm
+
+push:
+	git add .
+	git commit -m $(arg)
+	git push origin main
