@@ -54,9 +54,9 @@ int path_finder(int *path, int *map, char *dir, int dir_num,int row, int col){
     *(map + 9 * row + col) = 1;
 
     int ret_val = path_finder(path, map, dir, 0, row-1, col) ||
-          path_finder(path, map, dir, 1, row, col + 1)||
-          path_finder(path, map, dir, 2, row + 1, col)||
-          path_finder(path, map, dir, 3, row, col-1);
+                 path_finder(path, map, dir, 1, row, col + 1)||
+                 path_finder(path, map, dir, 2, row + 1, col)||
+                 path_finder(path, map, dir, 3, row, col-1);
 
     
     if( (((row - 1) < 0)||(*(map + 9 * (row - 1) + col)==1)||(*(map + 9 * (row - 1) + col)==2))&&
@@ -69,7 +69,6 @@ int path_finder(int *path, int *map, char *dir, int dir_num,int row, int col){
     if(ret_val == 1){
 
         printf("\033[1;96m");
-
         *(map + 9 * row + col) = 9;
         printf("\033[0m");
     }
@@ -87,12 +86,12 @@ int main(void){
         {0,0,0,0,0,0,0,0,0},
         {0,2,0,0,0,0,0,0,0},
         {0,0,2,0,0,0,0,0,0},
-        {0,0,0,2,0,0,0,0,0},
-        {0,0,0,0,2,0,0,0,0},
+        {0,2,2,2,0,0,0,0,0},
+        {0,2,3,0,2,0,0,0,0},
         {0,0,2,0,0,2,0,0,0},
         {0,2,2,2,0,0,2,0,0},
         {0,2,0,0,2,0,0,2,0},
-        {0,0,0,0,3,2,0,0,2}
+        {0,0,0,0,0,0,0,0,2}
     };
     int path[9][9] = {
                     
@@ -118,31 +117,34 @@ int main(void){
             }
         }printf("\n");
     }
+
     printf("\033[1;1H\033[2J");
-     for(int i = 0; i < 9; i++){
+    for(int i = 0; i < 9; i++){
+
         for(int j = 0; j < 9; j++){
-            if(map[i][j] == 1){
 
+            if( map[i][j] == 1){
                 printf("\033[1;93m");
-                printf("%d ", map[i][j]);
-                printf("\033[0m");
+                printf("%d ",map[i][j] );
             }
-            if(map[i][j] == 2){
-
-                printf("\033[1;94m");
-                printf("%d ", map[i][j]);
-                printf("\033[0m");
-            }
-            if(map[i][j] == 0){
-
+            else if(map[i][j] == 0){
                 printf("\033[1;92m");
-                printf("%d ", map[i][j]);
-                printf("\033[0m");
+                printf("%d ",map[i][j] );
+            }
+            else if(map[i][j] == 2){
+                printf("\033[1;91m");
+                printf("%d ",map[i][j] );
+            }
+            else if(map[i][j]== 3){
+                printf("\033[1;96m");
+                printf("%d ",map[i][j] );
+            }
+            else{
+            
+                printf("%d ",map[i][j] );
             }
 
-
+            printf("\033[0m");
         }printf("\n");
     }
-
-
 }
